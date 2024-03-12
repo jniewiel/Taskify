@@ -5,172 +5,216 @@ class Tasks
 
   def initialize
     @tasks = []
-    puts 'Welcome to Taskify!'
   end
 
-  def run
+  # -------------------------------------------------------------------------------------------------------------------------------- #
+  # Run the application
+  def main_menu
     loop do
-      puts 'What would you like to do? (select a number)'
+      puts "\n\n"'Welcome to Taskify!'"\n\n"
+      puts 'What would you like to do? (select a number)'"\n\n"
       puts '1. View'
       puts '2. Add'
       puts '3. Delete'
       puts '4. Update'
-      puts '5. Exit'
+      puts '5. Exit'"\n\n"
+
+      choice = gets.to_i 
+
+      case choice
+      when 1
+        view_menu
+      when 2
+        add_menu
+      when 3
+        delete_menu
+      when 4
+        update_menu
+      when 5
+        puts "\n"'Exiting Taskify. Goodbye!'"\n\n"
+        break
+      else
+        puts "\n"'Invalid option. Please choose a valid option (select one of the numbers provided).'"\n\n"
+      end
+    end
+  end
+
+  # -------------------------------------------------------------------------------------------------------------------------------- #
+  # View tasks or categories
+  def view_menu
+    loop do
+      puts "\n\n"'What would you like to view? (select a number)'"\n\n"
+      puts '1. All tasks'
+      puts '2. All categories'
+      puts '3. All tasks by category'
+      puts '4. Return to main menu'"\n\n"
 
       choice = gets.chomp.to_i
 
       case choice
       when 1
-        view_task
-        view_category
       when 2
-        add_task
-        add_category
       when 3
-        delete_task
-        delete_category
       when 4
-        update_task
-        update_category
-      when 5
-        puts 'Exiting Taskify. Goodbye!'
         break
       else
-        puts 'Invalid option. Please choose a valid option (select one of the numbers provided).'
+        puts "\n"'Invalid option. Please choose a valid option (select one of the numbers provided).'
       end
     end
   end
 
+  # -------------------------------------------------------------------------------------------------------------------------------- #
+  # Add a new task or category
+  def add_menu
+    loop do
+      puts "\n"'What would you like to add? (select a number)'"\n\n"
+      puts '1. Task'
+      puts '2. Category'
+      puts '3. Return to main menu'"\n\n"
 
-  def view_task
-    puts 'What would you like to view? (select a number)'
-    puts '1. All tasks'
-    puts '2. All categories'
-    puts '3. All tasks by category'
-    puts '4. Exit'
+      choice = gets.chomp.to_i
 
-    choice = gets.chomp.to_i
-
-    case choice
-    when 1
-    when 2
-    when 3
-    when 4
-    else
-      puts 'Invalid option. Please choose a valid option (select one of the numbers provided).'
+      case choice
+      when 1
+      when 2
+      when 3
+        break
+      else
+        puts "\n"'Invalid option. Please choose a valid option (select one of the numbers provided).'
+      end
     end
   end
 
-  def add_task
-    puts 'What would you like to add? (select a number)'
-    puts '1. Task'
-    puts '2. Category'
-    puts '3. Exit'
+  # -------------------------------------------------------------------------------------------------------------------------------- #
+  # Delete a task or category
+  def delete_menu
+    loop do
+      puts "\n"'What would you like to delete? (select a number)'"\n\n"
+      puts '1. Task'
+      puts '2. Category'
+      puts '3. Return to main menu'"\n\n"
 
-    choice = gets.chomp.to_i
+      choice = gets.chomp.to_i
 
-    case choice
-    when 1
-    when 2
-    when 3
-    else
-      puts 'Invalid option. Please choose a valid option (select one of the numbers provided).'
+      case choice
+      when 1
+      when 2
+      when 3
+        break
+      else
+        puts "\n"'Invalid option. Please choose a valid option (select one of the numbers provided).'
+      end
     end
   end
 
-  def delete_task
-    puts 'What would you like to delete? (select a number)'
-    puts '1. Task'
-    puts '2. Category'
-    puts '3. Exit'
+  # -------------------------------------------------------------------------------------------------------------------------------- #
+  # Update a task or category
+  def update_menu
+    loop do
+      puts "\n"'What would you like to update? (select a number)'"\n\n"
+      puts '1. Task'
+      puts '2. Category'
+      puts '3. Return to main menu'"\n\n"
 
-    choice = gets.chomp.to_i
+      choice = gets.chomp.to_i
 
-    case choice
-    when 1
-    when 2
-    when 3
-    else
-      puts 'Invalid option. Please choose a valid option (select one of the numbers provided).'
+      case choice
+      when 1
+      when 2
+      when 3
+        break
+      else
+        puts "\n"'Invalid option. Please choose a valid option (select one of the numbers provided).'
+      end
     end
   end
 
-  def update_task
-    puts 'What would you like to update? (select a number)'
-    puts '1. Task'
-    puts '2. Category'
-    puts '3. Exit'
-
-    choice = gets.chomp.to_i
-
-    case choice
-    when 1
-    when 2
-    when 3
-    else
-      puts 'Invalid option. Please choose a valid option (select one of the numbers provided).'
-    end
-  end
-
+=begin
+  
+  # -------------------------------------------------------------------------------------------------------------------------------- #
+  # View categories
   def view_category
-    puts 'What would you like to view? (select a number)'
-    puts '1. All categories'
-    puts '2. All tasks by category'
-    puts '3. Exit'
+    loop do
+      puts "\n"'What would you like to view? (select a number)'"\n\n"
+      puts '1. All categories'
+      puts '2. All tasks by category'
+      puts '3. Return to main menu'"\n\n"
 
-    choice = gets.chomp.to_i
+      choice = gets.chomp.to_i
 
-    case choice
-    when 1
-    when 2
-    when 3
-    else
-      puts 'Invalid option. Please choose a valid option (select one of the numbers provided).'
+      case choice
+      when 1
+      when 2
+      when 3
+        main_menu
+        break
+      else
+        puts "\n"'Invalid option. Please choose a valid option (select one of the numbers provided).'
+      end
     end
   end
 
+  # -------------------------------------------------------------------------------------------------------------------------------- #
+  # Add a new category
   def add_category
-    puts 'What would you like to add? (select a number)'
-    puts '1. Category'
-    puts '2. Exit'
+    loop do
+      puts "\n"'What would you like to add? (select a number)'"\n\n"
+      puts '1. Category'
+      puts '2. Return to main menu'"\n\n"
 
-    choice = gets.chomp.to_i
+      choice = gets.chomp.to_i
 
-    case choice
-    when 1
-    when 2
-    else
-      puts 'Invalid option. Please choose a valid option (select one of the numbers provided).'
+      case choice
+      when 1
+      when 2
+        main_menu
+        break
+      else
+        puts "\n"'Invalid option. Please choose a valid option (select one of the numbers provided).'
+      end
     end
   end
-
+  
+  # -------------------------------------------------------------------------------------------------------------------------------- #
+  # Delete a category
   def delete_category
-    puts 'What would you like to delete? (select a number)'
-    puts '1. Category'
-    puts '2. Exit'
+    loop do
+      puts "\n"'What would you like to delete? (select a number)'"\n\n"
+      puts '1. Category'
+      puts '2. Return to main menu'"\n\n"
 
-    choice = gets.chomp.to_i
+      choice = gets.chomp.to_i
 
-    case choice
-    when 1
-    when 2
-    else
-      puts 'Invalid option. Please choose a valid option (select one of the numbers provided).'
+      case choice
+      when 1
+      when 2
+        main_menu
+        break
+      else
+        puts "\n"'Invalid option. Please choose a valid option (select one of the numbers provided).'
+      end
     end
   end
-
+  
+  # -------------------------------------------------------------------------------------------------------------------------------- #
+  # Update a category
   def update_category
-    puts 'What would you like to update? (select a number)'
-    puts '1. Category'
-    puts '2. Exit'
+    loop do
+      puts "\n"'What would you like to update? (select a number)'"\n\n"
+      puts '1. Category'
+      puts '2. Return to main menu'"\n\n"
 
-    case choice
-    when 1
-    when 2
-    else
-      puts 'Invalid option. Please choose a valid option (select one of the numbers provided).'
+      case choice
+      when 1
+      when 2
+        main_menu
+        break
+      else
+        puts "\n"'Invalid option. Please choose a valid option (select one of the numbers provided).'
+      end
     end
   end
 
+=end
 
 end
