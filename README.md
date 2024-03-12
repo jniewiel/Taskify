@@ -1,7 +1,7 @@
-# ruby-cli-template
+# Taskify
 
-<h1>Taskify</h1>
 Taskify is a Ruby CLI (command line interface) application lets allow users to create, view, update, and delete tasks!
+
 
 Features include: 
 - Listing tasks 
@@ -10,5 +10,7 @@ Features include:
 - Setting custom due dates, priority levels, and categories
 
 <h2>Operation</h2> 
-tbh
+
+W.I.P.
+
 - Ruby version: `3.2.1`
