@@ -2,12 +2,12 @@
 
 class Main
 
-  attr_accessor :main, :completed, :categories
+  attr_accessor :categories
 
   def initialize
-    @main = []
-    @completed = []
-    @categories = [@main, @completed]
+    @categories = {}
+    @categories["Main"] = ["Take out trash", "Make reservations", "Practice Ruby coding"]
+    @categories["Completed"] = []
   end
 
   puts "\n\n"'Welcome to Taskify!'"\n\n"
@@ -53,9 +53,9 @@ class Main
       puts 'View Menu'
       puts '---------'
       puts 'What would you like to view? (select a number)'"\n\n"
-      puts '1. All tasks'
+      puts '1. All tasks & categories'
       puts '2. All categories'
-      puts '3. All tasks by category'
+      puts '3. All tasks in one category'
       puts '4. Return to main menu'"\n\n"
 
       choice = gets.chomp.to_i
@@ -97,7 +97,7 @@ class Main
       when 2
         puts "\n"'What category would you like to add to?'"\n\n"
         category = gets.chomp
-        add_task_specific
+        add_task_cat(category)
       when 3
         add_category
       when 4
@@ -179,18 +179,27 @@ class Main
 
     task = String.new
 
-    puts 'Enter a task:'
+    puts "Enter a task for Main:"
     task = gets.chomp
 
-    main << task
+    categories["Main"] << task.capitalize
 
-    pp main #delete later
+    pp categories["Main"]                                #update later!
   end
 
   # ---------------------------------------------------- #
   # Add a new task to a specific category
-  def add_task_specific
-     
+  def add_task_cat(location)
+    puts "\n"
+
+    task = String.new
+
+    puts "Enter a task for Category: #{location}:"
+    task = gets.chomp
+
+    categories[location] << task.capitalize
+
+    pp categories[location]                              #update later!
   end
 
   # ---------------------------------------------------- #
