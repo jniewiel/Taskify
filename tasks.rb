@@ -2,10 +2,12 @@
 
 class Main
 
-  attr_accessor :tasks
-  
+  attr_accessor :main, :completed, :categories
+
   def initialize
-    @tasks = []
+    @main = []
+    @completed = []
+    @categories = [@main, @completed]
   end
 
   puts "\n\n"'Welcome to Taskify!'"\n\n"
@@ -42,7 +44,8 @@ class Main
       end
     end
   end
-  # -------------------------------------------------------------------------------------------------------------------------------- #
+  
+  # ---------------------------------------------------- #  
   # View tasks or categories
   def view_menu
     loop do
@@ -73,7 +76,7 @@ class Main
     end
   end
 
-  # -------------------------------------------------------------------------------------------------------------------------------- #
+  # ---------------------------------------------------- #  
   # Add a new task or category
   def add_menu
     loop do
@@ -81,9 +84,10 @@ class Main
       puts 'Add Menu'
       puts '--------'
       puts 'What would you like to add? (select a number)'"\n\n"
-      puts '1. Task'
-      puts '2. Category'
-      puts '3. Return to main menu'"\n\n"
+      puts '1. Add task to main'
+      puts '2. Add task to a category'
+      puts '3. Add a new category'
+      puts '4. Return to main menu'"\n\n"
 
       choice = gets.chomp.to_i
 
@@ -91,8 +95,12 @@ class Main
       when 1
         add_task
       when 2
-        add_category
+        puts "\n"'What category would you like to add to?'"\n\n"
+        category = gets.chomp
+        add_task_specific
       when 3
+        add_category
+      when 4
         break
       else
         puts "\n"'Invalid option. Please choose a valid option (select one of the numbers provided).'
@@ -100,7 +108,7 @@ class Main
     end
   end
 
-  # -------------------------------------------------------------------------------------------------------------------------------- #
+  # ---------------------------------------------------- #
   # Delete a task or category
   def delete_menu
     loop do
@@ -127,7 +135,7 @@ class Main
     end
   end
 
-  # -------------------------------------------------------------------------------------------------------------------------------- #
+  # ---------------------------------------------------- #
   # Update a task or category
   def update_menu
     loop do
@@ -154,20 +162,18 @@ class Main
     end
   end
   
-  # -------------------------------------------------------------------------------------------------------------------------------- #
+  # ---------------------------------------------------- #
   # View tasks
   def view_tasks
     puts "\n"
 
-    @tasks.each do |task|
-      puts "#{task}"
+    @categories.each do |category|
+      puts "#{category}"
     end
-
-    pp Tasks.instance_variables
   end
 
-  # -------------------------------------------------------------------------------------------------------------------------------- #
-  # Add a new task
+  # ---------------------------------------------------- #
+  # Add a new task to Main
   def add_task
     puts "\n"
 
@@ -176,42 +182,48 @@ class Main
     puts 'Enter a task:'
     task = gets.chomp
 
-    @tasks << task
+    main << task
 
-    pp @tasks #delete later
+    pp main #delete later
   end
-  
-  # -------------------------------------------------------------------------------------------------------------------------------- #
+
+  # ---------------------------------------------------- #
+  # Add a new task to a specific category
+  def add_task_specific
+     
+  end
+
+  # ---------------------------------------------------- #
   # Delete a task
   def delete_task
     
   end
-  
-  # -------------------------------------------------------------------------------------------------------------------------------- #
+
+  # ---------------------------------------------------- #  
   # Update a task
   def update_task
     
   end
 
-  # -------------------------------------------------------------------------------------------------------------------------------- #
+  # ---------------------------------------------------- #
   # View categories
   def view_categories
     
   end
 
-  # -------------------------------------------------------------------------------------------------------------------------------- #
+  # ---------------------------------------------------- #
   # Add a new category
   def add_category
     
   end
   
-  # -------------------------------------------------------------------------------------------------------------------------------- #
+  # ---------------------------------------------------- #  
   # Delete a category
   def delete_category
     
   end
   
-  # -------------------------------------------------------------------------------------------------------------------------------- #
+  # ---------------------------------------------------- #
   # Update a category
   def update_category
 
