@@ -250,11 +250,13 @@ class Main
           puts "\n""#{category} doesn't exist. Please choose an existing category.""\n\n"
         end
       when 2
-        puts "\n"'What category would you like to delete?'"\n"
+        puts "\n"'What category would you like to delete? (Main cannot be deleted)'"\n"
         puts "#{categories.keys}""\n\n"
         category = gets.chomp.downcase.capitalize
         
-        if @categories.keys.include?(category)
+        if category == "Main"
+          puts "\n""Main cannot be deleted. Please choose another category.""\n\n"
+        elsif @categories.keys.include?(category)
           delete_category(category)
           break
         else
@@ -322,9 +324,29 @@ class Main
 
       case choice
       when 1
-        update_task
+        puts "\n"'In what category would you like to update a task?'"\n"
+        puts "#{categories.keys}""\n\n"
+        category = gets.chomp.downcase.capitalize
+        
+        if @categories.keys.include?(category)
+          update_task(category)
+          break
+        else
+          puts "\n""#{category} doesn't exist. Please choose an existing category.""\n\n"
+        end
       when 2
-        update_category
+        puts "\n"'What category name would you like to update? (Main cannot be updated)'"\n"
+        puts "#{categories.keys}""\n\n"
+        category = gets.chomp.downcase.capitalize
+        
+        if category == "Main"
+          puts "\n""Main cannot be changed. Please choose another category.""\n\n"
+        elsif @categories.keys.include?(category)
+          update_category(category)
+          break
+        else
+          puts "\n""#{category} doesn't exist. Please choose an existing category.""\n\n"
+        end
       when 3
         break
       else
@@ -335,14 +357,57 @@ class Main
 
   # ---------------------------------------------------- #
   # Update a task
-  def update_task
+  def update_task(location)
+    puts "\n"
 
+    old_task = String.new
+    updated_task = String.new
+    index = 1
+
+    puts "\n"
+    puts "#{location}:"
+    categories[location].each do |main_task|
+      puts "#{index}. #{main_task}"
+      index += 1
+    end
+    puts "\n""What task would you like to update at #{location}? (select a number)""\n"
+
+    old_task = gets.chomp.to_i
+    
+    if categories[location][old_task - 1] != nil
+      puts "\n""Enter the new task:""\n"
+      updated_task = gets.chomp
+
+      categories[location][old_task - 1] = updated_task
+
+      puts "\n"
+      puts "#{location}:"
+      categories[location].each do |main_task|
+        puts "  - #{main_task}"
+      end
+      puts "\n"
+    else
+      puts "\n"
+      puts "Task #{old_task} doesn't exist."
+    end
   end
 
   # ---------------------------------------------------- #
   # Update a category
-  def update_category
+  def update_category(location)
+    puts "\n"
 
+    updated_category_name = String.new
+
+    puts "\n""What would you like to update #{location} to?""\n"
+    updated_category_name = gets.chomp.downcase.capitalize
+
+    categories[updated_category_name] = categories[location]
+    categories.delete(location)
+
+    puts "\n""Categories:"
+    puts "#{categories.keys}"
+    puts "\n"
   end
 
 end
