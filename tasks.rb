@@ -1,4 +1,5 @@
 # tasks.rb
+# To run this app, enter `ruby main.rb` to console.
 
 class Main
 

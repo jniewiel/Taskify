@@ -1,4 +1,5 @@
 #tests/test_tasks.rb
+# To run tests, enter `ruby tests/test_tasks.rb` to console.
 
 require 'minitest/autorun'
 require './tasks'

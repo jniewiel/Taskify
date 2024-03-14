@@ -1,4 +1,5 @@
 # main.rb
+# To run this app, enter `ruby main.rb` to console.
 
 require_relative 'tasks'
 
