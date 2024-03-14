@@ -11,6 +11,5 @@ In terminal, run Taskify by typing `ruby main.rb`.
 To run tests, type `ruby tests/test_tasks.rb`.
 
 Enjoy!
-- Jan
 
 - Ruby version: `3.2.1`
